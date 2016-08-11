@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>Portals Bridges - Groovy Bridge - Jetspeed Header Phase Support</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-bridges.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta></head><body class="composite"><div id="banner"><a href="http://portals.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="http://portals.apache.org/images/apache-portals.gif"></img></a><a href="http://portals.apache.org/bridges" id="projectLogo"><span>Groovy Bridge</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 21 December 2007
+                  | Doc for 1.0.4</div><div class="xright">
+        
+        <a href="http://portals.apache.org/jetspeed-2" class="externalLink" title="External Link" target="_nw">Jetspeed 2</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="../../index.html">Bridges Home</a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuGroovy_Bridge"><h5>Groovy Bridge</h5><ul><li class="none"><a href="index.html">Jetspeed Groovy Portlet Guide</a></li><li class="none"><a href="prefvalidate.html">Jetspeed Groovy PreferencesValidator Guide</a></li><li class="none"><a href="headersupport.html">Jetspeed Groovy Portlet with Header Phase Support Guide</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About Groovy Bridge</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Jetspeed_Groovy_Portlet_with_Header_Phase_Support_Guide"></a><h2>Jetspeed Groovy Portlet with Header Phase Support Guide</h2><p>Jetspeed-2 provides an interface for a portlet to be able to support the pre-286 header phase. If you want your portlet to support this, just use GroovyPortletHeaderPhaseSupport class instead of GroovyPortlet, and implement SupportsHeaderPhase interface.</p><div class="subsection"><a name="1__The_Portlet_Class_supporting_header_phase"></a><h3>1. The Portlet Class supporting header phase</h3><p>
+				Create the file HelloGroovyHeaderSupport.groovy in a directory called
+				groovy-simplest/WEB-INF/classes:
+                
+    <div class="source"><pre>
+import javax.portlet.GenericPortlet;
+import javax.portlet.PortletContext;
+import javax.portlet.PortletRequestDispatcher;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.PortletPreferences;
+import javax.portlet.ValidatorException;
+
+import org.apache.jetspeed.headerresource.HeaderResource;
+import org.apache.jetspeed.portlet.PortletHeaderRequest;
+import org.apache.jetspeed.portlet.PortletHeaderResponse;
+import org.apache.jetspeed.portlet.SupportsHeaderPhase;
+
+public class HelloGroovyHeaderSupport extends GenericPortlet implements SupportsHeaderPhase
+{
+    public void doHeader(PortletHeaderRequest request, PortletHeaderResponse response)
+    {
+        // use header resource component to ensure header logic is included only once
+        HeaderResource headerResource = response.getHeaderResource();
+        headerResource.dojoEnable();
+        
+        headerResource.dojoAddCoreLibraryRequire( "dojo.lang.*" );
+        headerResource.dojoAddCoreLibraryRequire( "dojo.event.*" );
+        headerResource.dojoAddCoreLibraryRequire( "dojo.io.*" );
+        headerResource.dojoAddCoreLibraryRequire( "dojo.widget.*" );
+        headerResource.dojoAddCoreLibraryRequire( "dojo.widget.Button" );
+     }
+    
+    public void doView(RenderRequest request, RenderResponse response)
+    {
+        response.setContentType("text/html");
+        
+        // Let's put a dojo widget button for simplicity here.
+        response.getWriter().println """
+            &lt;button widgetId="helloGroovyButton" dojoType="Button" onclick="alert('Hello, Groovy');"&gt;
+            Say Hello
+            &lt;/button&gt;
+        """
+    }
+    
+}
+                </pre></div>
+  
+                For simplicity, in the above example, the doView() method just writes a simple HTML fragment to show DOJO button widget.
+                </p></div><div class="subsection"><a name="2__The_portlet_xml"></a><h3>2. The portlet.xml</h3><p>
+                
+    <div class="source"><pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;portlet-app id="velocitysimplest" version="1.0"&gt;
+  &lt;portlet id="HelloGroovyHeaderSupport"&gt;
+    &lt;portlet-name&gt;HelloGroovyHeaderSupport&lt;/portlet-name&gt;
+    &lt;display-name&gt;Hello Groovy with Header Support Display Name&lt;/display-name&gt;
+     &lt;portlet-class&gt;org.apache.portals.bridges.groovy.GroovyPortletHeaderPhaseSupport&lt;/portlet-class&gt;
+    &lt;init-param&gt;
+      &lt;name&gt;script-source&lt;/name&gt;
+      &lt;!-- Note: You can set script source in three ways.
+                 The first is to use relative path uri,
+                 the second is to use file: url,
+                 and the last is to classpath: uri --&gt;
+      &lt;!--
+      &lt;value&gt;/WEB-INF/groovy/HelloGroovy.groovy&lt;/value&gt;
+      &lt;value&gt;file:/C:/Program Files/Apache Software Foundation/Tomcat 5.5/webapps/demo/WEB-INF/groovy/HelloGroovy.groovy&lt;/value&gt;
+      --&gt;
+      &lt;value&gt;classpath:HelloGroovyHeaderSupport.groovy&lt;/value&gt;
+    &lt;/init-param&gt;
+    &lt;!-- If auto-refresh is true, then a modification of script source applies instantly. --&gt;
+    &lt;init-param&gt;
+      &lt;name&gt;auto-refresh&lt;/name&gt;
+      &lt;value&gt;true&lt;/value&gt;
+    &lt;/init-param&gt;
+    &lt;supports&gt;
+      &lt;mime-type&gt;text/html&lt;/mime-type&gt;
+      &lt;portlet-mode&gt;VIEW&lt;/portlet-mode&gt;
+    &lt;/supports&gt;
+    &lt;supported-locale&gt;en&lt;/supported-locale&gt;
+    &lt;portlet-info&gt;
+      &lt;title&gt;Hello Groovy with Header Support Title&lt;/title&gt;
+      &lt;short-title&gt;Hello Groovy with Header Support Short Title&lt;/short-title&gt;
+    &lt;/portlet-info&gt;
+  &lt;/portlet&gt;
+&lt;/portlet-app&gt;
+                </pre></div>
+  
+                The &lt;portlet-class&gt; was replaced with 'org.apache.portals.bridges.groovy.GroovyPortletHeaderPhaseSupport' instead of 'org.apache.portals.bridges.groovy.GroovyPortlet' to support header phase.
+                </p></div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2005-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

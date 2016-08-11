@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!--
+	Licensed to the Apache Software Foundation (ASF) under one or more
+	contributor license agreements.  See the NOTICE file distributed with
+	this work for additional information regarding copyright ownership.
+	The ASF licenses this file to You under the Apache License, Version 2.0
+	(the "License"); you may not use this file except in compliance with
+	the License.  You may obtain a copy of the License at
+	
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<document>
+	<properties>
+		<title>How to Download Portals Bridges</title>
+		<subtitle>Documentation on How to Download Portals Bridges</subtitle>
+		<authors>
+			<person name="Ate Douma" email="ate@douma.nu" />
+		</authors>
+	</properties>
+	<body>
+		<section name="Download Portals Bridges Distribution">
+			<p>
+				Portals Bridges are distributed in several formats for your
+				convenience and distributed under the
+				<a href="http://maven.apache.org/license.html">
+					Apache License, version 2.0
+				</a>
+				.
+			</p>
+			<subsection name="Portals Bridges 1.0.4 Source Distribution">
+			<table>
+				<tr>
+					<th />
+					<th>Mirrors</th>
+					<th>Checksum</th>
+					<th>Signature</th>
+				</tr>
+				<tr>
+					<td>portals-bridges-1.0.4-src.tar.bz2</td>
+          <td><a href="http://www.apache.org/dyn/closer.cgi/portals/bridges/portals-bridges-1.0.4-src.tar.bz2">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4-src.tar.bz2.md5">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4-src.tar.bz2.asc">here</a></td>
+				</tr>
+				<tr>
+          <td>portals-bridges-1.0.4-src.tar.gz</td>
+          <td><a href="http://www.apache.org/dyn/closer.cgi/portals/bridges/portals-bridges-1.0.4-src.tar.gz">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4-src.tar.gz.md5">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4-src.tar.gz.asc">here</a></td>
+				</tr>
+				<tr>
+          <td>portals-bridges-src-1.0.4.tar.zip</td>
+          <td><a href="http://www.apache.org/dyn/closer.cgi/portals/bridges/portals-bridges-1.0.4-src.zip">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4-src.zip.md5">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4-src.zip.asc">here</a></td>
+				</tr>
+			</table>
+			</subsection>
+			<subsection name="Portals Bridges 1.0.4 Full Distribution (binaries, src and generated website)">
+			<table>
+				<tr>
+					<th />
+					<th>Mirrors</th>
+					<th>Checksum</th>
+					<th>Signature</th>
+				</tr>
+				<tr>
+					<td>portals-bridges-1.0.4.tar.bz2</td>
+          <td><a href="http://www.apache.org/dyn/closer.cgi/portals/bridges/portals-bridges-1.0.4.tar.bz2">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4.tar.bz2.md5">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4.tar.bz2.asc">here</a></td>
+				</tr>
+				<tr>
+          <td>portals-bridges-1.0.4.tar.gz</td>
+          <td><a href="http://www.apache.org/dyn/closer.cgi/portals/bridges/portals-bridges-1.0.4.tar.gz">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4.tar.gz.md5">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4.tar.gz.asc">here</a></td>
+				</tr>
+				<tr>
+          <td>portals-bridges-1.0.4.tar.zip</td>
+          <td><a href="http://www.apache.org/dyn/closer.cgi/portals/bridges/portals-bridges-1.0.4.zip">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4.zip.md5">here</a></td>
+          <td><a href="http://www.apache.org/dist/portals/bridges/portals-bridges-1.0.4.zip.asc">here</a></td>
+				</tr>
+			</table>
+			</subsection>
+      <subsection name="Portals Bridges Example Applications">
+        <p>
+          Prebuild versions of the example applications are also available separately as Web archive (WAR) file.
+        </p>
+        <table>
+          <tr>
+            <th />
+            <th>Mirrors</th>
+            <th>Checksum</th>
+            <th>Signature</th>
+          </tr>
+          <tr>
+            <td>jsf-demo.war</td>
+            <td><a href="http://www.apache.org/dyn/closer.cgi/portals/bridges/applications/1.0.4/jsf-demo.war">here</a></td>
+            <td><a href="http://www.apache.org/dist/portals/bridges/applications/1.0.4/jsf-demo.war.md5">here</a></td>
+            <td><a href="http://www.apache.org/dist/portals/bridges/applications/1.0.4/jsf-demo.war.asc">here</a></td>
+          </tr>
+          <tr>
+            <td>jpetstore.war</td>
+            <td><a href="http://www.apache.org/dyn/closer.cgi/portals/bridges/applications/1.0.4/jpetstore.war">here</a></td>
+            <td><a href="http://www.apache.org/dist/portals/bridges/applications/1.0.4/jpetstore.war.md5">here</a></td>
+            <td><a href="http://www.apache.org/dist/portals/bridges/applications/1.0.4/jpetstore.war.asc">here</a></td>
+          </tr>
+          <tr>
+            <td>php.war</td>
+            <td><a href="http://www.apache.org/dyn/closer.cgi/portals/bridges/applications/1.0.4/php.war">here</a></td>
+            <td><a href="http://www.apache.org/dist/portals/bridges/applications/1.0.4/php.war.md5">here</a></td>
+            <td><a href="http://www.apache.org/dist/portals/bridges/applications/1.0.4/php.war.asc">here</a></td>
+          </tr>
+          <tr>
+            <td>perl.war</td>
+            <td><a href="http://www.apache.org/dyn/closer.cgi/portals/bridges/applications/1.0.4/perl.war">here</a></td>
+            <td><a href="http://www.apache.org/dist/portals/bridges/applications/1.0.4/perl.war.md5">here</a></td>
+            <td><a href="http://www.apache.org/dist/portals/bridges/applications/1.0.4/perl.war.asc">here</a></td>
+          </tr>
+          <tr>
+            <td>springmvc.war</td>
+            <td><a href="http://www.apache.org/dyn/closer.cgi/portals/bridges/applications/1.0.4/springmvc.war">here</a></td>
+            <td><a href="http://www.apache.org/dist/portals/bridges/applications/1.0.4/springmvc.war.md5">here</a></td>
+            <td><a href="http://www.apache.org/dist/portals/bridges/applications/1.0.4/springmvc.war.asc">here</a></td>
+          </tr>
+        </table>
+      </subsection>
+      <subsection name="Release Notes">
+        <p>
+          The Release Notes for Portals Bridges Version 1.0.4 are available <a href="release-notes.html">here</a>.
+        </p>
+      </subsection>
+		</section>
+
+	</body>
+</document>
+

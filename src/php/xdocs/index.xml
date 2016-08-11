@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<document>
+  <properties>
+    <title>PHP Bridge Summary</title>
+    <authors>
+      <person name="Roger Ruttimann" email="rogerrut@apache.org"/>
+    </authors>
+  </properties>
+  <body>
+    <section name="Summary">
+      <p>
+        PHP Bridge Overview
+<ul>
+<li>Designed to run existing PHP applications inside the portal</li>
+<li>Minimal re-coding of the required depends on the application.</li> 
+<li>Uses PHP Java API to execute PHP and rewrites output HTML.</li>
+<li>Installation of PHP libraries in LD_LIBRARY_PATH</li>
+<li>Major differences between versions (see below)</li>
+<li>Relative URL's are converted to Portlet Actions.</li>
+<li>Invocation from other portlets pass parameters as a session object.</li>
+</ul>
+      </p>
+      
+      <P>Communication
+      <ul>
+      <li>Portlet sees Parameters posted to itself (JSR-168 restriction)</li>
+<li>Invokation from another portlet through a session object.</li>
+<li>ScriptRuntimeData class can be used to pass parameters to a PHP /Perl portlet</li>
+<li>Portlets process query arguments (GET) and Parameters (POST)</li>
+      </ul>
+      
+      </P>
+    </section>
+    <section name="Differences between PHP4 and PHP5" >
+    <P>
+    PHP 4
+    <ul>
+<li>Included Java API and a servlet example which the portlet was based on.</li>
+<li>Just make sure that the Java API is configured</li>
+<li>Build php portlet using the using the PHP JNI headers</li>
+<li>Make sure that the PHP libraries are in the path for tomcat.</li>
+<li>The php-portlet jar is in the class path</li>
+<li>Well performing, stable</li>
+</ul>
+</P>
+
+    <P>
+    PHP 5
+    <ul>
+<li>Java API was dropped from PHP distribution.</li>
+<li>Updated Java API only available in CVS repository of EXT</li>
+<li>Compiling Java API and php 4 based portlet code works</li>
+<li>Running PHP4 application run fine.</li>
+<li>Using any new OO features in PHP 5 crash VM</li>
+<li>Java API unstable need major effort to resolve memory issues
+</li>
+</ul>
+</P>
+
+    
+    
+    
+    </section>
+  </body>
+</document>

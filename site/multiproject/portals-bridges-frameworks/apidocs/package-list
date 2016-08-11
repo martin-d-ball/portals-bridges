@@ -1,0 +1,4 @@
+org.apache.portals.bridges.frameworks
+org.apache.portals.bridges.frameworks.model
+org.apache.portals.bridges.frameworks.spring
+org.apache.portals.bridges.frameworks.spring.validation

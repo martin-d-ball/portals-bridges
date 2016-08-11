@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+  
+  http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  
+  $Id$
+-->
+<portlet-app id="network-monitor-application" version="1.0">
+  <portlet id="network-monitor">
+    <init-param>
+      <name>ServletContextProvider</name>
+      <value>org.apache.jetspeed.portlet.ServletContextProviderImpl</value>
+    </init-param>
+    <init-param>
+      <name>PortletScopeStrutsSession</name>
+      <value>true</value>
+    </init-param>
+    <init-param>
+      <name>ViewPage</name>
+      <value>/Status/Status.do</value>
+    </init-param>
+    <init-param>
+      <name>EditPage</name>
+      <value>/Options/Options.do</value>
+    </init-param>
+    <init-param>
+      <name>HelpPage</name>
+      <value>/applicationHelp.do</value>
+    </init-param>
+    <portlet-name>Network Monitor Portlet</portlet-name>
+    <display-name>Network Monitor</display-name>
+    <portlet-class>org.apache.portals.bridges.struts.StrutsPortlet</portlet-class>
+    <supports>
+      <mime-type>text/html</mime-type>
+      <portlet-mode>VIEW</portlet-mode>
+      <portlet-mode>EDIT</portlet-mode>
+      <portlet-mode>HELP</portlet-mode>
+    </supports>
+    <supported-locale>en</supported-locale>
+    <portlet-info>
+      <title>Network Monitor</title>
+      <short-title>The world's first Andromda Portlet running on Jetspeed</short-title>
+    </portlet-info>
+  </portlet>
+</portlet-app>

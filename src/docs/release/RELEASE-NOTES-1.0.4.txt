@@ -1,0 +1,9 @@
+Release Notes - Portals Bridges - Version 1.0.4
+
+** Bug
+    * [PB-71] - FacesPortlet should apply RenderKitFactory.HTML_BASIC_RENDER_KIT when default-render-kit-id is not specified
+    * [PB-72] - ClassCastException in PortletApplicationModelImpl since Spring Framework 2.0.5
+
+** Improvement
+    * [PB-74] - Safe creation of context in GenericVelocityPortlet for JS2's new feature, auto-dispatching for edit_defaults mode.
+    * [PB-75] - GroovyPortlet need to support Jetspeed's new feature, auto-dispatching for edit_defaults mode option.

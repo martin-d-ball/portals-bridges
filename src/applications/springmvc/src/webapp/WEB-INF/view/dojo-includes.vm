@@ -1,0 +1,7 @@
+dojo.require('dojo.widget.*');
+dojo.require('dojo.widget.Tree');
+dojo.require("dojo.widget.Button");
+dojo.require("dojo.widget.TabContainer");
+dojo.require("dojo.widget.ContentPane");
+dojo.require("dojo.widget.LayoutContainer");
+dojo.require("dojo.widget.Manager");

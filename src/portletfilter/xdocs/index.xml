@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<document>
+  <properties>
+    <title>About Apache Portals Portlet Filter</title>
+    <authors>
+      <person name="Shinsuke Sugaya" email="shinsuke@apache.org"/>
+    </authors>
+  </properties>
+  <body>
+    <section name="About Apache Portals Portlet Filter">
+      <subsection name="Overview">
+        <p>
+          FilterPortlet enables you to add processes you want before and after accessing the target portlet.
+          The feature provided by FilterPortlet is like Servlet Filter. (Portlet Filter may be included in
+          the future Portlet Spec, but currently it's not included yet.) 
+        </p>
+      </subsection>
+      <subsection name="Class and Interface">
+        <p>
+          <table>
+  		    <tr> 
+		      <th>Class/Interface</th>
+		      <th>Description</th>
+		    </tr>
+            <tr> 
+              <td>FilterPortlet class</td>
+              <td>FilterPortlet wraps the target portlet.</td>
+            </tr>
+            <tr> 
+              <td>PortletFilter interface</td>
+              <td>The process you want to add is implemented this interface.</td>
+            </tr>
+            <tr> 
+              <td>PortletFilterChain class</td>
+              <td>
+              This class is an object provided to the developer giving a view
+              into the invocation chain of a filtered request for a resource.
+              </td>
+            </tr>
+            <tr> 
+              <td>PortletFilterConfig class</td>
+              <td>
+              A filter configuration object used by FilterPortlet to pass
+              information to a filter during initialization. 
+              </td>
+            </tr>
+	      </table>
+          If you know how to use Servlet Filter, it's easy to use FilterPortlet.
+        </p>
+      </subsection>
+      <subsection name="Example">
+        <p>
+          For example, if you create "HelloWorldPortletFilter" as the portlet filter, portlet.xml is: 
+        </p>
+        <p>
+<source><![CDATA[
+<portlet-app id="helloworld" version="1.0">
+  <portlet id="FilteredHelloWorld">
+    <portlet-name>FilteredHelloWorld</portlet-name>
+    <display-name>Filtered Hello World</display-name>
+    <description>HelloWorld is a filtered portlet for testing</description>
+    <portlet-class>org.apache.portals.bridges.portletfilter.FilterPortlet</portlet-class>
+    <init-param>
+      <name>portlet-class</name>
+      <value>org.apache.portals.bridges.helloworld.HelloWorldPortlet</value>
+    </init-param>
+    <init-param>
+      <name>portlet-filters</name>
+      <value>org.apache.portals.bridges.helloworld.filter.HelloWorldPortletFilter</value>
+    </init-param>
+    <expiration-cache>-1</expiration-cache>
+    <supports>
+      <mime-type>text/html</mime-type>
+      <portlet-mode>VIEW</portlet-mode>
+    </supports>
+    <supported-locale>en</supported-locale>
+    <supported-locale>ja</supported-locale>
+    <resource-bundle>org.apache.portals.bridges.helloworld.resources.HelloWorldResources</resource-bundle>
+    <portlet-info>
+      <title>Filtered Hello World</title>
+      <short-title>This is a filtered portlet for testing</short-title>
+      <keywords>Hello,Test,PortletFilter</keywords>
+    </portlet-info>
+  </portlet>
+</portlet-app>
+]]></source>
+        </p>
+      </subsection>
+    </section>
+  </body>
+</document>

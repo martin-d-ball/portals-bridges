@@ -1,0 +1,22 @@
+Release Notes - Portals Bridges - Version 1.0.3
+
+** Sub-task
+    * [PB-25] - Provide bridges library components build configuration and xdocs
+
+** Bug
+    * [PB-7] - Messages are not displayed, validation errors are ignored
+    * [PB-58] - PHP bridge: bug in ServletConfigImpl
+    * [PB-59] - Struts bridge: render phase of portlet doesn't remove the attr RENDER_CONTEXT from the portlet session
+    * [PB-64] - FacesPortlet should Restore View before the ActionRequest lifecycle is executed.
+    * [PB-66] - FacesPortlet should apply defaultRenderKitId instead of HTML_BASIC
+    * [PB-68] - PortletUIViewRoot needs saveState
+
+** Improvement
+    * [PB-63] - Update to latest dependencies
+    * [PB-67] - Added support for ServletRequests
+    * [PB-69] - Groovy Portlet Bridge for rapid dev: Parse, instantiate, invoke and auto-refresh a groovy script portlet
+    * [PB-70] - Groovy Bridge needs to support groovy script preferences validator and groovy script pre-286 portlet.
+
+** New Feature
+    * [PB-65] - PortletResourceURLFactory: A new generic interface for direct access to a portlet, a lightweight version of what Portlet 2.0 ResourceURL will provide
+

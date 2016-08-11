@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>Portals Bridges - Portlet Filter - About Apache Portals Portlet Filter</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-bridges.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta></head><body class="composite"><div id="banner"><a href="http://portals.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="http://portals.apache.org/images/apache-portals.gif"></img></a><a href="http://portals.apache.org/bridges" id="projectLogo"><span>Portlet Filter</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 21 December 2007
+                  | Doc for 1.0.4</div><div class="xright">
+        
+        <a href="http://portals.apache.org/jetspeed-2" class="externalLink" title="External Link" target="_nw">Jetspeed 2</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="../../index.html">Bridges Home</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="portals-bridges-portletfilter.pdf"><img title="PDF Documentation" style="border: 1px" src="../../images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><strong><a href="index.html">About Portlet Filter</a></strong></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="About_Apache_Portals_Portlet_Filter"></a><h2>About Apache Portals Portlet Filter</h2><div class="subsection"><a name="Overview"></a><h3>Overview</h3><p>
+          FilterPortlet enables you to add processes you want before and after accessing the target portlet.
+          The feature provided by FilterPortlet is like Servlet Filter. (Portlet Filter may be included in
+          the future Portlet Spec, but currently it's not included yet.) 
+        </p></div><div class="subsection"><a name="Class_and_Interface"></a><h3>Class and Interface</h3><p>
+          <table class="bodyTable"><tr class="a"><th>Class/Interface</th><th>Description</th></tr><tr class="b"><td>FilterPortlet class</td><td>FilterPortlet wraps the target portlet.</td></tr><tr class="a"><td>PortletFilter interface</td><td>The process you want to add is implemented this interface.</td></tr><tr class="b"><td>PortletFilterChain class</td><td>
+              This class is an object provided to the developer giving a view
+              into the invocation chain of a filtered request for a resource.
+              </td></tr><tr class="a"><td>PortletFilterConfig class</td><td>
+              A filter configuration object used by FilterPortlet to pass
+              information to a filter during initialization. 
+              </td></tr></table>
+          If you know how to use Servlet Filter, it's easy to use FilterPortlet.
+        </p></div><div class="subsection"><a name="Example"></a><h3>Example</h3><p>
+          For example, if you create "HelloWorldPortletFilter" as the portlet filter, portlet.xml is: 
+        </p><p>
+
+    <div class="source"><pre>
+&lt;portlet-app id="helloworld" version="1.0"&gt;
+  &lt;portlet id="FilteredHelloWorld"&gt;
+    &lt;portlet-name&gt;FilteredHelloWorld&lt;/portlet-name&gt;
+    &lt;display-name&gt;Filtered Hello World&lt;/display-name&gt;
+    &lt;description&gt;HelloWorld is a filtered portlet for testing&lt;/description&gt;
+    &lt;portlet-class&gt;org.apache.portals.bridges.portletfilter.FilterPortlet&lt;/portlet-class&gt;
+    &lt;init-param&gt;
+      &lt;name&gt;portlet-class&lt;/name&gt;
+      &lt;value&gt;org.apache.portals.bridges.helloworld.HelloWorldPortlet&lt;/value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+      &lt;name&gt;portlet-filters&lt;/name&gt;
+      &lt;value&gt;org.apache.portals.bridges.helloworld.filter.HelloWorldPortletFilter&lt;/value&gt;
+    &lt;/init-param&gt;
+    &lt;expiration-cache&gt;-1&lt;/expiration-cache&gt;
+    &lt;supports&gt;
+      &lt;mime-type&gt;text/html&lt;/mime-type&gt;
+      &lt;portlet-mode&gt;VIEW&lt;/portlet-mode&gt;
+    &lt;/supports&gt;
+    &lt;supported-locale&gt;en&lt;/supported-locale&gt;
+    &lt;supported-locale&gt;ja&lt;/supported-locale&gt;
+    &lt;resource-bundle&gt;org.apache.portals.bridges.helloworld.resources.HelloWorldResources&lt;/resource-bundle&gt;
+    &lt;portlet-info&gt;
+      &lt;title&gt;Filtered Hello World&lt;/title&gt;
+      &lt;short-title&gt;This is a filtered portlet for testing&lt;/short-title&gt;
+      &lt;keywords&gt;Hello,Test,PortletFilter&lt;/keywords&gt;
+    &lt;/portlet-info&gt;
+  &lt;/portlet&gt;
+&lt;/portlet-app&gt;
+</pre></div>
+  
+        </p></div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2005-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

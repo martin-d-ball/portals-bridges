@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+    $Id$
+-->
+<project>
+    <extend>${basedir}/../../project.xml</extend>
+    <pomVersion>3</pomVersion>
+    <artifactId>springmvc</artifactId>
+    <name>Spring Portlet Jetspeed Application</name>
+    
+    <repository>
+        <connection>scm:svn:http://svn.apache.org/repos/asf/portals/bridges/trunk/applications/springmvc</connection>
+        <developerConnection>
+            scm:svn:https://svn.apache.org/repos/asf/portals/bridges/trunk/applications/springmvc
+        </developerConnection>
+        <url>http://svn.apache.org/viewcvs.cgi/portals/bridges/trunk/applications/springmvc/</url>
+    </repository>
+    
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>        
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>        
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>        
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-portlet</artifactId>
+            <version>${spring.version}</version>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>        
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>        
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>        
+        </dependency>      
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-support</artifactId>
+            <version>${spring.version}</version>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>        
+        </dependency>      
+        
+        <!-- jstl support -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.0.6</version>
+            <type>jar</type>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>
+        </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.0.6</version>
+            <type>jar</type>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>
+        </dependency>
+        <dependency>
+            <id>log4j</id>
+            <version>${log4j.version}</version>
+            <properties>
+                <war.bundle>${log4j.include}</war.bundle>
+            </properties>
+        </dependency>     
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons.logging.version}</version>
+            <properties>
+                <war.bundle>${commons.logging.include}</war.bundle>
+            </properties>
+        </dependency>
+        <dependency>
+            <id>commons-collections</id>
+            <version>3.0</version>
+            <type>jar</type>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>
+        </dependency>
+        
+        <dependency>
+            <id>portlet-api</id>
+            <version>1.0</version>
+            <properties>
+                <war.bundle>false</war.bundle>
+            </properties>
+        </dependency>	
+        <dependency>
+            <id>junit</id>
+            <version>3.8.1</version>
+            <properties>
+                <war.bundle>false</war.bundle>
+            </properties>
+        </dependency>      
+        
+        <dependency>
+            <groupId>org.apache.portals.jetspeed-2</groupId>
+            <artifactId>portals-gems</artifactId>
+            <version>${jetspeed.version}</version>
+            <type>jar</type>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>
+        </dependency>
+        
+            <!-- Velocity -->
+    <dependency>
+      <id>velocity</id>
+      <version>1.4</version>
+      <properties>
+        <war.bundle>true</war.bundle>
+      </properties>
+    </dependency>
+    <dependency>
+      <id>velocity-tools</id>
+      <version>1.2</version>
+      <url>http://jakarta.apache.org/velocity</url>
+      <properties>
+        <war.bundle>true</war.bundle>
+      </properties>
+    </dependency>
+
+        <dependency>
+            <id>xerces</id>
+            <version>2.3.0</version>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>
+        </dependency>
+        <dependency>
+            <id>xml-apis</id>
+            <version>2.0.2</version>
+            <properties>
+                <war.bundle>true</war.bundle>
+            </properties>
+        </dependency>
+        
+    </dependencies>
+  
+  <!-- build information for the project -->
+
+  <build>
+    <sourceDirectory>src/java</sourceDirectory>
+    <unitTestSourceDirectory>src/test</unitTestSourceDirectory>
+    <unitTest>
+      <includes>
+        <include>**/*Test.java</include>
+      </includes>
+      <excludes>
+        <exclude>**/NaughtyTest.java</exclude>
+      </excludes>
+    </unitTest>
+       <resources>
+	      <resource>
+	        <directory>${basedir}/src/java</directory>
+	        <excludes>
+	          <exclude>**/*.java</exclude>
+	        </excludes>
+          <includes>
+            <include>**/*.vm</include>
+            <include>**/*.xml</include>                
+            <include>**/*.properties</include>                
+          </includes>
+	      </resource>
+           <resource>
+               <directory>${basedir}/src/java</directory>
+               <excludes>
+                   <exclude>**/*.java</exclude>
+               </excludes>
+           </resource>
+           <resource>
+               <directory>${basedir}/../../</directory>
+               <targetPath>../${pom.artifactId}/META-INF</targetPath>
+               <includes>
+                   <include>LICENSE.TXT</include>
+                   <include>NOTICE.txt</include>
+               </includes>
+           </resource>
+       </resources>
+  </build>
+</project>

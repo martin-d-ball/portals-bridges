@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<!--
+	Licensed to the Apache Software Foundation (ASF) under one or more
+	contributor license agreements.  See the NOTICE file distributed with
+	this work for additional information regarding copyright ownership.
+	The ASF licenses this file to You under the Apache License, Version 2.0
+	(the "License"); you may not use this file except in compliance with
+	the License.  You may obtain a copy of the License at
+	
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<document>
+	<properties>
+		<title>How to use Groovy PreferencesValidator</title>
+		<subtitle>Documentation for Creating a Groovy PreferencesValidator</subtitle>
+		<authors>
+			<person name="Woonsan Ko" email="woon_san@yahoo.com" />
+		</authors>
+	</properties>
+	<body>
+		<section name="Jetspeed Groovy PreferencesValidator Guide">
+			<p>
+				This guide provides a tutorial for creating a Groovy Preferences Validator.
+			</p>
+			<subsection name="1. The Groovy PreferencesValidator Class">
+                <p>Create the file HelloGroovyValidator.groovy in a directory called groovy-simplest/WEB-INF/classes:
+                <source><![CDATA[
+import javax.portlet.PortletPreferences;
+import javax.portlet.PreferencesValidator;
+import javax.portlet.ValidatorException;
+
+public class HelloGroovyValidator implements PreferencesValidator
+{
+    public void validate(PortletPreferences preferences)
+    {
+        String message = preferences.getValue("message", null);
+        
+        if (message == null || "".equals(message.trim()))
+        {
+            def failedKeys = [ "message" ];
+            throw new ValidatorException("message must be set!", failedKeys);
+        }
+    }
+}               ]]></source>
+                </p>
+            </subsection>
+			<subsection name="2. The portlet.xml">
+    			<p>
+    			Edit the file portlet.xml in the groovy-simplest/WEB-INF directory to add Groovy PreferencesValidator. In this case, &lt;portlet-preferences&gt; element is added to the previous example.
+    			<source><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app id="velocitysimplest" version="1.0">
+  <portlet id="HelloGroovy">
+    <portlet-name>HelloGroovy</portlet-name>
+    <display-name>Hello Groovy Display Name</display-name>
+    <portlet-class>org.apache.portals.bridges.groovy.GroovyPortlet</portlet-class>
+    <init-param>
+      <name>script-source</name>
+      <!-- Note: You can set script source in three ways.
+                 The first is to use relative path uri,
+                 the second is to use file: url,
+                 and the last is to classpath: uri -->
+      <!--
+      <value>/WEB-INF/groovy/HelloGroovy.groovy</value>
+      <value>file:/C:/Program Files/Apache Software Foundation/Tomcat 5.5/webapps/demo/WEB-INF/groovy/HelloGroovy.groovy</value>
+      -->
+      <value>classpath:HelloGroovy.groovy</value>
+    </init-param>
+    <!-- If auto-refresh is true, then a modification of script source applies instantly. -->
+    <init-param>
+      <name>auto-refresh</name>
+      <value>true</value>
+    </init-param>
+    <supports>
+      <mime-type>text/html</mime-type>
+      <portlet-mode>VIEW</portlet-mode>
+      <portlet-mode>EDIT</portlet-mode>
+      <portlet-mode>HELP</portlet-mode>
+    </supports>
+    <supported-locale>en</supported-locale>
+    <portlet-info>
+      <title>Hello Groovy Title</title>
+      <short-title>Hello Groovy Short Title</short-title>
+    </portlet-info>
+    <portlet-preferences>
+      <preference>
+        <name>validator-script-source</name>
+        <!-- Note: You can set script source in two ways.
+                   The first is to use classpath: path uri,
+                   and the other is to file: url.
+                   Note that relative path uri is not supported for preferences validator. -->
+        <value>classpath:HelloGroovyValidator.groovy</value>
+        <!--
+        <value>file:/C:/Program Files/Apache Software Foundation/Tomcat 5.5/webapps/demo/WEB-INF/groovy/HelloGroovyValidator.groovy</value>
+        -->
+        <read-only>true</read-only>
+      </preference>
+      <preference>
+        <name>validator-auto-refresh</name>
+        <!-- If validator-auto-refresh is true, 
+             then a modification of script source applies instantly. -->
+        <value>true</value>
+        <read-only>true</read-only>
+      </preference>
+      <preferences-validator>org.apache.portals.bridges.groovy.GroovyPreferencesValidator</preferences-validator>
+    </portlet-preferences>
+  </portlet>
+</portlet-app>]]>
+    			</source>
+    			</p>
+			</subsection>
+			<subsection name="3. How to handle validation exception">
+    			<p>If you set a preferences validator, you should handle a validation exception in your portlet code like the following example. The HelloGroovy.groovy in the previous example now handles validation exception during PortletPreferences.store() call.
+                <source><![CDATA[
+    public void processAction(ActionRequest request, ActionResponse response)
+    {
+        String message = request.getParameter("message");
+        
+        PortletPreferences prefs = request.getPreferences();
+        prefs.setValue("message", message);
+        
+        try {
+            prefs.store();
+        } catch (ValidatorException e) {
+            // send this error information to the rendering phase.
+            response.setRenderParameter("errorMessage", e.getMessage());
+        }
+    }
+                ]]></source>
+                </p>
+            </subsection>
+            <subsection name="4. Additional Notes">
+                <p>In groovy, you can use powerful regular expressions like the following example:
+                <source><![CDATA[
+    public void validate(PortletPreferences preferences)
+    {
+        // Let's assume that we have a preference for an email address.
+        String email = preferences.getValue("email", "");
+        
+        if (!(email ==~ /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/))
+        {
+            def failedKeys = [ "email" ];
+            throw new ValidatorException("message must be set!", failedKeys);
+        }
+    }
+                ]]></source>
+                </p>
+			</subsection>
+		</section>
+	</body>
+</document>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+
+<portlet-app id="jsf-demo" 
+    xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd" version="1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd 
+    http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd">        
+    
+	<portlet id="guessNumber">
+	    <description>JSF GuessNumber Portlet: This portlet runs the popular 'Pick A Number' guessing game. The goal is to guess, in the least number of guesses, a number between [1..{Range}]</description>
+        <portlet-name>guessNumber</portlet-name>
+        <display-name>JSF GuessNumber Portlet: JSF Bridge</display-name>
+        <portlet-class>org.apache.portals.bridges.jsf.FacesPortlet</portlet-class>
+        <init-param>
+      		<name>ViewPage</name>
+			<value>/greeting.jsp</value>
+	    </init-param>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>applications-games.png</value>
+        </init-param>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>GuessNumber Portlet</title>
+            <short-title>guessNumber</short-title>
+            <keywords>fun,game,pick,number,JSF,faces,bridge,tutorial</keywords>            
+        </portlet-info>
+    </portlet>
+    	
+   	<portlet>
+        <description>Calendar Portlet is a demo of writing a JSF portlet. Notes can be stored in a calendar widget by date.</description>		
+        <portlet-name>CalendarPortlet</portlet-name>		
+        <display-name>Calendar</display-name>		
+        <portlet-class>org.apache.portals.bridges.jsf.FacesPortlet</portlet-class>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/view/calendar-view.jsp</value>
+        </init-param>
+        <init-param>
+            <name>HelpPage</name>
+            <value>/WEB-INF/view/calendar-help.html</value>
+        </init-param>
+        <init-param>
+            <name>EditPage</name>
+            <value>/WEB-INF/view/calendar-edit.jsp</value>
+        </init-param>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>office-calendar.png</value>
+        </init-param>     
+        <init-param>
+        	<name>OverrideUniqueIds</name>
+        	<value>true</value>
+        </init-param>      
+        <expiration-cache>-1</expiration-cache>		        
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+		</supports>
+        <supported-locale>en</supported-locale>        
+        <supported-locale>de</supported-locale>
+<!--           
+	    <resource-bundle>org.apache.portals.applications.desktop.resources.Calendar</resource-bundle>            
+    -->
+		<portlet-info>
+            <title>Calendar</title>
+            <short-title>Calendar</short-title>
+			<keywords>calendar,desktop,JSF,faces,bridge,tutorial</keywords>
+        </portlet-info>
+	</portlet>
+	    
+</portlet-app>

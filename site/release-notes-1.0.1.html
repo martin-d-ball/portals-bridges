@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>Portals Bridges - Release Notes - Portals Bridges - Version 1.0.1</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-bridges.css");@import url("./style/project.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta></head><body class="composite"><div id="banner"><a href="http://portals.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="http://portals.apache.org/images/apache-portals.gif"></img></a><a href="http://portals.apache.org/bridges" id="projectLogo"><span>Portals Bridges</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 21 December 2007
+                  | Doc for 1.0.4</div><div class="xright">
+        
+        <a href="http://www.jcp.org/en/jsr/detail?id=168" class="externalLink" title="External Link" target="_nw">JSR-168</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="http://portals.apache.org/jetspeed-2" class="externalLink" title="External Link" target="_nw">Jetspeed 2</a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuPortals_Bridges"><h5>Portals Bridges</h5><ul><li class="none"><a href="index.html">Overview</a></li><li class="none"><a href="multiproject/portals-bridges-common/index.html">Common Utilities and Interfaces</a></li><li class="none"><a href="multiproject/portals-bridges-jsf/index.html">JSF Bridge</a></li><li class="none"><a href="multiproject/portals-bridges-struts/index.html">Struts Bridge</a></li><li class="none"><a href="multiproject/portals-bridges-php/index.html">PHP Bridge</a></li><li class="none"><a href="multiproject/portals-bridges-velocity/index.html">Velocity Bridge</a></li><li class="none"><a href="multiproject/portals-bridges-groovy/index.html">Groovy Bridge</a></li><li class="none"><a href="multiproject/portals-bridges-perl/index.html">Perl Bridge</a></li><li class="none"><a href="multiproject/portals-bridges-portletfilter/index.html">Portlet Filter</a></li><li class="none"><a href="multiproject/portals-bridges-frameworks/index.html">Frameworks</a></li></ul></div><div id="menuExample_Applications"><h5>Example Applications</h5><ul><li class="none"><a href="multiproject/jsf-demo/index.html">JSF Portlet Demo</a></li><li class="none"><a href="multiproject/jpetstore/index.html">iBATIS JPetstore Portlet Demo</a></li><li class="none"><a href="multiproject/php/index.html">PHP Portlet</a></li><li class="none"><a href="multiproject/perl/index.html">Perl Portlet</a></li><li class="none"><a href="multiproject/portals-bridges-andromda-struts/index.html">Andromda Struts Portlet Demo</a></li></ul></div><div id="menuGet_Portals_Bridges_1_0_4"><h5>Get Portals Bridges 1.0.4</h5><ul><li class="none"><a href="download.html">Download</a></li><li class="none"><a href="release-notes.html">Release Notes</a></li></ul></div><div id="menuSupport"><h5>Support</h5><ul><li class="none"><a href="mail-lists.html">Mailing List</a></li><li class="none"><a href="issue-tracking.html">Bug Database</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About Portals Bridges</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Release_Notes_-_Portals_Bridges_-_Version_1_0_1"></a><h2>Release Notes - Portals Bridges - Version 1.0.1</h2><div class="subsection"><a name="Bug"></a><h3>Bug</h3><ul>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-35">PB-35</a>] - Multiple instances of the same bridge application behave badly due to ID conflicts</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-38">PB-38</a>] - Switching between View and Edit modes, portlet remembers only the last action (and not the last action in that mode) and goes to that regardless of the mode.</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-39">PB-39</a>] - TabBean doesn't implement Serializable</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-41">PB-41</a>] - Tiles Context gets lost "Struts Bridge - error with tiles"</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-44">PB-44</a>] - Broken link on the JSF document</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-45">PB-45</a>] - Should not use instanceof on Portlet request interfaces to distinguish ActionRequest from RenderRequest</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-46">PB-46</a>] - FilterPortlet cannot be used with ServletContextProvider because it doesn't extend GenericPortlet</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-47">PB-47</a>] - FilterPortlet throws NPE on PortletConfig dependent methods when the managed portlet doesn't implement PortletConfig</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-48">PB-48</a>] - FilterPortlet.destroy() doesn't call managed portlet.destroy()</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-49">PB-49</a>] - Multiple instances of a struts portlet should be able to coexist on a single page.</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-54">PB-54</a>] - PortletViewHandlerImpl.getResourceURL() always prepends the context path.</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-56">PB-56</a>] - Dropping multiple struts versions build support as it is causing problems for the maven-2 build </li>
+</ul></div><div class="subsection"><a name="Improvement"></a><h3>Improvement</h3><ul>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-12">PB-12</a>] - Document "prefix" feature of RenderContextAttributes</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-31">PB-31</a>] - Implement a MapServer bridge</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-42">PB-42</a>] - Korean translation for jsf-demo and spring library resources</li>
+  <li>[<a href="https://issues.apache.org/jira/browse/PB-50">PB-50</a>] - Support using Springframework 2.0 with the frameworks bridge</li>
+</ul></div><div class="subsection"><a name="Task"></a><h3>Task</h3><ul>
+      <li>[<a href="https://issues.apache.org/jira/browse/PB-16">PB-16</a>] - Moving portals-bridges to its own Portals Bridges home project</li>
+    </ul></div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2005-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<document>
+  <properties>
+    <title>Portals Bridges Home Page</title>
+    <subtitle>Welcome to Portals Bridges</subtitle>
+    <authors>
+      <person name="Ate Douma" email="ate@douma.nu"/>
+    </authors>
+  </properties>
+  <body>
+<section name="Overview">
+      <p>
+      Portals Bridges provides support for <a href="http://www.jcp.org/en/jsr/detail?id=168" target="_nw">JSR-168</a> compliant
+      Portlet development using common web frameworks like Struts, JSF, PHP, Perl, Velocity and Groovy.  
+      </p>
+      <subsection name="JavaServer Faces">
+      <p>
+	  JavaServer Faces (JSF) applications can be run within an Portlet environment with little or no changes using the <a href="multiproject/portals-bridges-jsf/index.html">JSF bridge</a>
+      which provides a JSFPortlet ready to be deployed.
+      Similar functionality is also available from the <a href='http://myfaces.apache.org/portlet-bridge/index.html'>Apache MyFaces PortletBridge</a>.  
+      This bridge is the reference implementation for <a href='http://www.jcp.org/en/jsr/detail?id=301'>JSR 301: Portlet Bridge for JavaServer Faces</a>.
+	</p>      
+      </subsection>
+      <subsection name="Struts and PHP">
+      </subsection>
+      <p>
+      Pure servlet based frameworks like Struts or PHP 4 (with the Java binding) are very difficult to use in a
+      Portlet environment because they only support and understand a single request event.
+      </p>
+      <p>
+      For a Portlet, the request processing has to be handled in two separated action and render events. Furthermore,
+      the Portlet Specification doesn't allow servlet access during the action request event.
+      </p>
+      <p>
+      A distinctive feature of the Portals Bridges is that it removes these barriers and thereby allows the mapping of
+      an action request event to the underlying servlet handler implementation (e.g. a StrutsAction).
+      </p>
+      <p>
+      All that is needed is an implementation of the generic ServletContextProvider interface, provided with The Portals
+      Bridges <a href="multiproject/portals-bridges-common/index.html">Common</a> library, for a specific Portal.
+      </p>
+      <p>
+      The <a href="multiproject/portals-bridges-struts/index.html">Portals Struts Bridge</a> furthermore provides a truly transparent mapping of the two request events
+      onto the underlying Struts Action mappings and enables an existing Struts Application to be run within a Portlet context
+      with very little changes.
+      </p>
+      <p>
+      The following table contains a list of Portals already known to support this solution:
+      </p>
+      <table> 
+      <tr>
+        <th>Portal</th>
+        <th>License</th>
+        <th>Support</th>
+        <th>Comment</th>
+      </tr>
+      <tr>
+        <td nowrap="true"><a href="http://portals.apache.org/jetspeed-2" target="_nw">Jetspeed 2 Enterprise Portal</a></td>
+        <td>Apache</td>
+        <td>Native</td>
+        <td>All the Apache Portals Bridges are developed using Jetspeed 2</td>
+      </tr>
+      <tr>
+        <td nowrap="true"><a href="http://portals.apache.org/jetspeed-1" target="_nw">Jetspeed 1 Enterprise Portal</a></td>
+        <td>Apache</td>
+        <td>Native (Fusion)</td>
+        <td>The 1.6 Fusion release provides JSR-168 support using Jetspeed 2 as embedded portlet container</td>
+      </tr>
+      <tr>
+        <td><a href="http://www.jboss.org/products/jbossportal" target="_nw">JBoss Portal</a></td>
+        <td>LGPL</td>
+        <td>Native</td>
+        <td>The Struts Bridge is provided with JBoss Portal 2.0</td>
+      </tr>
+      <tr>
+        <td><a href="http://www.gridsphere.org" target="_nw">GridSphere Portal</a></td>
+        <td>GridSphere Open License</td>
+        <td>Native</td>
+        <td>The Struts Bridge is provided with Gridsphere Portal 2.1</td>
+      </tr>
+      <tr>
+        <td><a href="http://www.nabh.com/projects/sbportal" target="_nw">Stringbeans Portal</a></td>
+        <td>GPL, Commercial</td>
+        <td>Native</td>
+        <td>The Struts Bridge is provided with Stringbeans Portal 2.5</td>
+      </tr>
+      <tr>
+        <td><a href="http://www.vignette.com" target="_nw">Vignette Application Portal</a></td>
+        <td>Commercial</td>
+        <td>Custom</td>
+        <td>The Struts Bridge is successfully used with VAP 7.x</td>
+      </tr>
+      <tr>
+        <td><a href="http://cocoon.apache.org" target="_nw">Apache Cocoon Portal</a></td>
+        <td>Apache</td>
+        <td>Native</td>
+        <td>The Struts Bridge is successfully used with the latest Cocoon Portal engine.</td>
+      </tr>
+      </table>
+      <subsection name="Velocity">
+      <p>
+      Although JavaServer Pages (JSP) are very much promoted for Portlet View rendering, other technologies can be
+      used just as easily. The <a href="multiproject/portals-bridges-velocity/index.html">Portals Velocity Bridge</a> provides several ready to use Velocity based
+      Portlets, together with a library of useful scripts. 
+      </p>
+      </subsection>
+      <subsection name="Groovy">
+      <p>
+        The <a href="multiproject/portals-bridges-groovy/index.html">Groovy Portlet Bridge</a> allows using groovy scripting for rapid portlet development.
+        A groovy script portlet can be implemented like Java-based portlets, and so developers can use any techniques used in Java.
+        For example, a groovy script portlet can extend org.apache.portals.bridges.common.GenericServletPortlet to simplify implementation.
+        Therefore, GroovyPortlet is very simple, but it will be very useful for developers.
+      </p>
+      </subsection>
+      <subsection name="Perl">
+      <p>
+      Perl based web applications can be accessed as a Portlet using the <a href="multiproject/portals-bridges-perl/index.html">Portals Perl Bridge</a>.
+      </p>
+      <subsection name="Common Utilities and Interfaces">
+      <p>
+      The <a href="multiproject/portals-bridges-common/index.html">Portals Bridges Common</a> library provides, besides
+      the already mentioned ServletContextProvider interface, several additional utilities like a GenericServletPortlet
+      which you can use for simple JSP based Portlets (or any invokable view Render technology). Or use it as base
+      class for your own Bridge.
+      </p>
+      <p>
+      Other useful utilities included are a PreferenceHelper and a simple PortletMessaging component.
+      </p>
+      </subsection>
+      </subsection>
+      <subsection name="PortletFilter">
+      <p>
+        The <a href="multiproject/portals-bridges-portletfilter/index.html">Portlet Filter</a> provides a FilterPortlet which
+        enables you to add processes to run before and after accessing the target portlet.
+        The feature provided by FilterPortlet is like a Servlet Filter. (Portlet Filter may be included in
+        the future Portlet Spec, but currently it's not included yet.) 
+      </p>
+  </subsection>
+  <subsection name="Examples">
+      <p>
+      Several examples using the bridges are available:
+      <ul>
+        <li>The <a href="multiproject/jsf-demo/index.html">JSF Portlet Demo</a> application using the JSF Portlet Bridge</li>
+        <li>The <a href="multiproject/jpetstore/index.html">iBATIS JPetstore Demo Portlet</a> application using the Struts Portlet Bridge</li>
+        <li>The <a href="multiproject/php/index.html">PHP Portlet</a> application</li>
+        <li>The <a href="multiproject/perl/index.html">Perl Portlet</a> application</li>
+        <li>The <a href="multiproject/portals-bridges-andromda-struts/index.html">Andromda Struts demo portlet</a> application created using the Andromda BPM4Struts cartridge</li>
+      </ul>
+      </p>
+      <p>
+      Furhermore, Jetspeed 2 makes full use of bridges. For example have a look at:
+      <ul>
+        <li>The <a href="http://portals.apache.org/jetspeed-2/multiproject/j2-admin" target="_nw">Jetspeed-2 Administration</a> using the Velocity Bridge</li>
+      </ul>
+      </p>
+      </subsection>
+</section>
+>
+  </body>
+</document>

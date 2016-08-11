@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>Andromda Struts Demo - Features of the Andromda Struts Portlet Demo</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-bridges.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta></head><body class="composite"><div id="banner"><a href="http://portals.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="http://portals.apache.org/images/apache-portals.gif"></img></a><a href="http://portals.apache.org/bridges" id="projectLogo"><span>Andromda Struts Demo</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 21 December 2007
+                  | Doc for 1.0.4</div><div class="xright">
+        
+        <a href="http://portals.apache.org/jetspeed-2" class="externalLink" title="External Link" target="_nw">Jetspeed 2</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="../../index.html">Bridges Home</a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><strong><a href="index.html">About Andromda Struts Demo</a></strong></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Features_of_the_Andromda_Struts_Portlet_Demo"></a><h2>Features of the Andromda Struts Portlet Demo</h2><p>
+        The Andromda Struts demo portlet uses the Struts Bridge. This
+        demo provides tips, hints, and tricks necessary to run portlet
+        applications created using the Andromda BPM4Struts cartridge.
+        Page flow is defined using UML activity diagrams. The project
+        framework is generated using
+        <a href="http://galaxy.andromda.org/docs-3.2/" class="externalLink" title="External Link">Andromda 3.2</a>
+        . The original project is based on the
+        <a href="http://galaxy.andromda.org/docs-3.2/andromda-maven-plugins/index.html" class="externalLink" title="External Link">
+          Andromda Maven 2 plugin
+        </a>
+        .
+        <ul>
+          <li>
+            <a href="#Andromda_Overview">An Andromda MDA overview</a>
+          </li>
+          <li>
+            <a href="#Andromda_BPM4Struts_Cartridge">
+              The Andromda BPM4Struts Catridge
+            </a>
+          </li>
+          <li>
+            <a href="#Merge_Mappings_and_Merge_Locations">
+              Merge Mappings and Merge Locations
+            </a>
+          </li>
+          <li>
+            <a href="#Portlet_Modes">View, Edit, and Help modes</a>
+          </li>
+          <li>
+            <a href="#Controller">
+              A controller is defined by a UML entity of type Class
+            </a>
+          </li>
+          <li>
+            <a href="#View">
+              The application view is defined as a UML entity of type
+              ActionState
+            </a>
+          </li>
+          <li>
+            <a href="#Displaytag_Support">
+              Displaytag 1.1 supports the portlet specification
+            </a>
+          </li>
+          <li>
+            <a href="#Spring_Services">TODO</a>
+          </li>
+          <li>Supports Struts release 1.2.7 and Andromda 3.2</li>
+        </ul>
+      </p><div class="subsection"><a name="Andromda_Overview"></a><h3>Andromda Overview</h3><p>
+          <a href="http://www.andromda.org/" class="externalLink" title="External Link">Andromda</a>
+          is a code generator for Model Driven Software Development and
+          Model Driven Architecture.
+        </p><p>
+          Using UML entities one can model an applications page flow,
+          services, and entities in an platform independent way.
+        </p><p>
+          Cartridges are platform specific templates and metaobjects
+          used to interpret the models. Andromda comes with cartridges
+          for Java, EJB, Struts, JSF, .Net, and Spring.
+        </p></div><div class="subsection"><a name="Andromda_BPM4Struts_Cartridge"></a><h3>Andromda BPM4Struts Cartridge</h3><p>
+          The
+          <a href="http://galaxy.andromda.org/docs-3.2/andromda-cartridges/index.html" class="externalLink" title="External Link">
+            BPM4Struts cartridge
+          </a>
+          generates a Struts pattern for page flow and form input and
+          validation from UML activity diagrams.
+        </p><p>A Use Case is modeled as a point of entry.</p><p>
+          Each Activity Diagram defines a starting point which indicates
+          the start of Use Case execution.
+        </p><p>One or more Action States defers to business logic.</p><p>
+          One or more Action States defined as a FrontEndView stereotype
+          represent the page views.
+        </p><p>
+          Forms are defined using a Signal Event by which each parameter
+          can be typed and validated.
+        </p><p>
+          End points are used to indicate which Use Case is executed
+          next.
+        </p></div><div class="subsection"><a name="Merge_Mappings_and_Merge_Locations"></a><h3>Merge Mappings and Merge Locations</h3><p>
+          Customizing a cartridge is done by adding Merge Mappings and
+          or Merge Locations. They are the most common method used to
+          modify the default cartridge output.
+        </p><p>
+          Merge mappings replace or inject template code in the default
+          cartridge templates.
+        </p><p>
+          Merge locations define directories where entire templates can
+          replace the default templates used to generate code.
+        </p></div><div class="subsection"><a name="Portlet_Modes"></a><h3>Portlet Modes</h3><p>
+          The BPM4Struts cartridge provides help documentation for each
+          of the use cases defined. The demo points the Help mode to
+          this action displaying Use Case documentation describing the
+          application.
+        </p><p>
+          Any Use Case can be specified for other portlet modes. The
+          demo points the Edit mode to an appropriate Use Case.
+        </p></div><div class="subsection"><a name="Controller"></a><h3>Controller</h3><p>
+          A controller is defined in UML and is used to execute business
+          logic.
+        </p><p>
+          The controller is associated with an activity diagram. Any
+          operation defined can be called by a Action State entity in
+          the associated activity diagram. Each controller operation
+          argument is represented by Struts form property if the Action
+          State is modeled before a page view.
+        </p><p>
+          Andromda generates a class where project developers implement
+          the logic associated with controller operations.
+        </p></div><div class="subsection"><a name="View"></a><h3>View</h3><p>
+          Views are defined using the
+          <code>FrontEndView</code>
+          meta model stereotype.
+        </p></div><div class="subsection"><a name="Displaytag_Support"></a><h3>Displaytag Support</h3><p>
+          The
+          <a href="http://www.displaytag.org/" class="externalLink" title="External Link">Displaytag project</a>
+          tag libraries are used by the demo for presenting data in a
+          table view.
+        </p><p>
+          See the
+          <a href="http://svn.apache.org/repos/asf/portals/bridges/trunk/applications/andromda-struts/mda/src/main/config/mergeLocation/templates/bpm4struts/messages/displaytag.properties.vsl" class="externalLink" title="External Link">
+            displaytag.properties.vsl
+          </a>
+          template for defining project properties such as sorting and
+          presentation features.
+        </p></div><div class="subsection"><a name="Spring_Services"></a><h3>Spring Services</h3><p>
+          TODO: Include support for modeling Spring services and Object
+          Relational Mapping of Entities
+        </p></div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2005-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

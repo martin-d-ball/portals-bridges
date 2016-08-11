@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="$xmlEncoding"?>
+#*
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  $Id: applicationContext-dataSource.xml.vsl 547187 2007-06-14 09:05:19Z ate $
+*#
+#if ($stringUtils.isNotBlank($dataSource))
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <!-- ========================= DATASOURCE DEFINITION ========================= -->
+
+    <!-- JNDI DataSource for J2EE environments -->
+    <bean id="dataSource" class="$jndiDataSourceClass">
+        <property name="jndiName"><value>$dataSource</value></property>
+    </bean>
+    
+    <!-- ====================== End of DATASOURCE DEFINITION ====================== -->
+
+#if ($stringUtils.isNotBlank($transactionManager))
+    <!-- ===================== TRANSACTION MANAGER DEFINITION ========================= -->
+
+    <bean id="transactionManager" class="$transactionManager">
+#if ($transactionManager.indexOf('HibernateTransactionManager') != -1)
+        <property name="sessionFactory"><ref bean="sessionFactory"/></property>
+#elseif ($transactionManager.indexOf('DataSourceTransactionManager') != -1)
+            <property name="dataSource"><ref bean="dataSource"/></property>
+#else
+#if ($stringUtils.isNotBlank($userTransactionName))
+        <property name="userTransactionName">$springUtils.getSpringPropertyValue($userTransactionName)</property>
+#end
+#if ($stringUtils.isNotBlank($transactionManagerName))
+        <property name="transactionManagerName">$springUtils.getSpringPropertyValue($transactionManagerName)</property>
+#end
+#end
+    </bean>
+
+    <!-- ===================== TRANSACTION MANAGER DEFINITION ========================= -->
+#end
+
+</beans>
+#end

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>Portals Bridges - Velocity Bridge - Jetspeed Simple Velocity Portlet Guide</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-bridges.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta></head><body class="composite"><div id="banner"><a href="http://portals.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="http://portals.apache.org/images/apache-portals.gif"></img></a><a href="http://portals.apache.org/bridges" id="projectLogo"><span>Velocity Bridge</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 21 December 2007
+                  | Doc for 1.0.4</div><div class="xright">
+        
+        <a href="http://portals.apache.org/jetspeed-2" class="externalLink" title="External Link" target="_nw">Jetspeed 2</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="../../index.html">Bridges Home</a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuVelocity_Bridge"><h5>Velocity Bridge</h5><ul><li class="none"><a href="index.html">Guide</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><strong><a href="index.html">About Velocity Bridge</a></strong></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Jetspeed_Simple_Velocity_Portlet_Guide"></a><h2>Jetspeed Simple Velocity Portlet Guide</h2><p>
+				This guide provides a tutorial for creating a very
+				simple Velocity portlet with one template in the portlet view mode.
+			</p><div class="subsection"><a name="1__The_Portlet_Class"></a><h3>1. The Portlet Class</h3><p>
+				Create the file VelocitySimplest.java in a directory called
+				velocity-simplest/WEB-INF/classes:
+				
+    <div class="source"><pre>
+public class VelocitySimplest extends org.apache.portals.bridges.velocity.GenericVelocityPortlet
+{
+
+    public void doView(javax.portlet.RenderRequest request, javax.portlet.RenderResponse response)
+                throws javax.portlet.PortletException, java.io.IOException
+    {
+        super.doView(request, response);
+    }
+}
+				</pre></div>
+  
+				</p><p>
+				Compile the class in the velocity-simplest/WEB-INF/classes directory using the command,
+				
+    <div class="source"><pre>
+javac -cp portlet-api-1.0.jar:portals-bridges-velocity-1.0.jar:portals-bridges-common-1.0.jar VelocitySimplest.java
+				</pre></div>
+  
+				</p></div><div class="subsection"><a name="2__The_portlet_xml"></a><h3>2. The portlet.xml</h3><p>
+			Create the file portlet.xml in the velocity-simplest/WEB-INF directory.
+			
+    <div class="source"><pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;portlet-app id="velocitysimplest" version="1.0"&gt;
+  &lt;portlet id="VelocitySimplest"&gt;
+    &lt;portlet-name&gt;VelocitySimplest&lt;/portlet-name&gt;
+    &lt;display-name&gt;Velocity Simplest Display Name&lt;/display-name&gt;
+    &lt;portlet-class&gt;VelocitySimplest&lt;/portlet-class&gt;
+    &lt;init-param&gt;
+        &lt;name&gt;ViewPage&lt;/name&gt;
+        &lt;value&gt;/WEB-INF/view/world.vm&lt;/value&gt;
+    &lt;/init-param&gt;
+    &lt;supports&gt;
+      &lt;mime-type&gt;text/html&lt;/mime-type&gt;
+      &lt;portlet-mode&gt;VIEW&lt;/portlet-mode&gt;
+    &lt;/supports&gt;
+    &lt;supported-locale&gt;en&lt;/supported-locale&gt;
+    &lt;portlet-info&gt;
+      &lt;title&gt;Velocity Simplest Title&lt;/title&gt;
+      &lt;short-title&gt;Velocity Simplest Short Title&lt;/short-title&gt;
+    &lt;/portlet-info&gt;
+  &lt;/portlet&gt;
+&lt;/portlet-app&gt;
+			</pre></div>
+  
+			</p></div><div class="subsection"><a name="3__The_web_xml"></a><h3>3. The web.xml</h3><p>
+			Create the file web.xml in the velocity-simplest/WEB-INF directory.
+			
+    <div class="source"><pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+                         "http://java.sun.com/dtd/web-app_2_3.dtd"&gt;
+&lt;web-app&gt;
+  &lt;display-name&gt;Velocity Simplest&lt;/display-name&gt;
+  &lt;description&gt;The world's simplest Velocity portlet&lt;/description&gt;
+
+  &lt;!-- Define Velocity Servlet --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;velocity&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.apache.portals.bridges.velocity.BridgesVelocityViewServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+
+  &lt;!-- Map *.vm files to Velocity  --&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;velocity&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;*.vm&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+
+&lt;/web-app&gt;
+			</pre></div>
+  
+			</p></div><div class="subsection"><a name="4__The_View"></a><h3>4. The View</h3><p>
+                        Create the world.vm file in the velocity-simplest/WEB-INF/view directory. Put
+                        whatever content
+                        you desire in it. Notice that the template file is defined in the portlet init
+                        parameter <code>
+                        ViewPage</code>. The objects <a href="http://portals.apache.org/pluto/multiproject/portlet-api/apidocs/javax/portlet/PortletConfig.html" class="externalLink" title="External Link">PortletConfig</a>, <a href="http://portals.apache.org/pluto/multiproject/portlet-api/apidocs/javax/portlet/RenderRequest.html" class="externalLink" title="External Link">RenderRequest</a>, and <a href="http://portals.apache.org/pluto/multiproject/portlet-api/apidocs/javax/portlet/RenderResponse.html" class="externalLink" title="External Link">RenderResponse</a>
+                        are automatically
+                        placed in the Velocity context for use in Velocity templates. Here is a sample
+                        template showing a few of these objects methods and properties.
+
+    <div class="source"><pre>
+$portletConfig.portletName
+$portletConfig.portletContext.serverInfo
+#set ($MESSAGES = $portletConfig.getResourceBundle($renderRequest.Locale))
+$renderRequest.portletMode
+$renderResponse.namespace
+</pre></div>
+  
+			</p></div><div class="subsection"><a name="5__The_Dependency_JARs"></a><h3>5. The Dependency JARs</h3><p>
+                        Copy the commons-beanutils-1.7.0.jar, commons-collections-3.1.jar,
+                        commons-digester-1.7.jar, portals-bridges-velocity-1.0.jar,
+                        velocity-1.4.jar, and velocity-tools-1.2.jar to the velocity-simplest/WEB-INF/lib
+                        directory. IMPORTANT: 
+                        Do NOT put the portlet-api-1.0.jar in the war file. If you have already built
+                        Jetspeed these
+                        jars should be in your Maven repository. If so executing these commands in the lib
+                        directory will set up the dependencies for you.
+
+    <div class="source"><pre>
+ln -s ~/.maven/repository/commons-beanutils/jars/commons-beanutils-1.7.0.jar
+ln -s ~/.maven/repository/commons-collections/jars/commons-collections-3.1.jar
+ln -s ~/.maven/repository/commons-digester/jars/commons-digester-1.7.jar
+ln -s ~/.maven/repository/org.apache.portals.bridges/jars/portals-bridges-velocity-1.0.jar
+ln -s ~/.maven/repository/velocity/jars/velocity-1.4.jar
+ln -s ~/.maven/repository/velocity-tools/jars/velocity-tools-1.2.jar
+</pre></div>
+  
+			</p></div><div class="subsection"><a name="6__The_WAR_file"></a><h3>6. The WAR file</h3><p>
+			From the directory velocity-simplest combine the files above into a war file using the command,
+			
+    <div class="source"><pre>
+jar cvf ../velocitysimplest.war .
+			</pre></div>
+  
+			</p></div><div class="subsection"><a name="7__Deploy_the_WAR_file"></a><h3>7. Deploy the WAR file</h3><p>
+			Copy the war file to <code>$CATALINA_HOME/webapps/jetspeed/WEB-INF/deploy</code>.
+                        Jetspeed-2 will deploy the webapp.
+			</p></div><div class="subsection"><a name="8__The_PSML"></a><h3>8. The PSML</h3><p>
+                        Create the PSML page using the Jetspeed portlet chooser. Login and click on the
+                        edit page icon.
+                        Your user must have the permission to edit pages. The user <code>admin</code>
+                        password
+                        <code>admin</code> has permission to edit all pages.
+			</p></div></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2005-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

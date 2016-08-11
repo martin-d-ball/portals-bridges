@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<!--
+	Licensed to the Apache Software Foundation (ASF) under one or more
+	contributor license agreements.  See the NOTICE file distributed with
+	this work for additional information regarding copyright ownership.
+	The ASF licenses this file to You under the Apache License, Version 2.0
+	(the "License"); you may not use this file except in compliance with
+	the License.  You may obtain a copy of the License at
+	
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<document>
+	<properties>
+		<title>Jetspeed Groovy Portlet Guide</title>
+		<subtitle>Documentation for Creating a Groovy Portlet</subtitle>
+		<authors>
+			<person name="Woonsan Ko" email="woon_san@yahoo.com" />
+		</authors>
+	</properties>
+	<body>
+		<section name="Jetspeed Groovy Portlet Guide">
+			<p>
+				This guide provides a tutorial for creating a Groovy portlet 
+                with full-featured portlet modes.
+			</p>
+			<subsection name="1. The Portlet Class">
+				<p>
+				Create the file HelloGroovy.groovy in a directory called
+				groovy-simplest/WEB-INF/classes:
+				<source><![CDATA[
+import javax.portlet.GenericPortlet;
+import javax.portlet.PortletContext;
+import javax.portlet.PortletRequestDispatcher;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.PortletPreferences;
+
+public class HelloGroovy extends GenericPortlet
+{
+    public void doView(RenderRequest request, RenderResponse response)
+    {
+        PortletContext context = getPortletContext();
+        PortletRequestDispatcher rd = 
+            context.getRequestDispatcher("/WEB-INF/view/hello-groovy-view.jsp");
+        rd.include(request, response);
+    }
+    
+    public void doEdit(RenderRequest request, RenderResponse response)
+    {
+        PortletContext context = getPortletContext();
+        PortletRequestDispatcher rd = 
+            context.getRequestDispatcher("/WEB-INF/view/hello-groovy-edit.jsp");
+        rd.include(request, response);
+    }
+
+    public void doHelp(RenderRequest request, RenderResponse response)
+    {
+        PortletContext context = getPortletContext();
+        PortletRequestDispatcher rd = 
+            context.getRequestDispatcher("/WEB-INF/view/hello-groovy-help.html");
+        rd.include(request,response);
+    }
+    
+    public void processAction(ActionRequest request, ActionResponse response)
+    {
+        String message = request.getParameter("message");
+        
+        if (null != message && !"".equals(message)) {
+            PortletPreferences prefs = request.getPreferences();
+            prefs.setValue("message", message);
+            prefs.store();
+        }
+    }
+}
+				]]></source>
+				</p>
+				<p>
+				You don't have to compile the source because it's groovy.
+				</p>
+			</subsection>
+			<subsection name="2. The portlet.xml">
+			<p>
+			Create the file portlet.xml in the groovy-simplest/WEB-INF directory.
+			<source><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app id="velocitysimplest" version="1.0">
+  <portlet id="HelloGroovy">
+    <portlet-name>HelloGroovy</portlet-name>
+    <display-name>Hello Groovy Display Name</display-name>
+    <portlet-class>org.apache.portals.bridges.groovy.GroovyPortlet</portlet-class>
+    <init-param>
+      <name>script-source</name>
+      <!-- Note: You can set script source in three ways.
+                 The first is to use relative path uri,
+                 the second is to use file: url,
+                 and the last is to classpath: uri -->
+      <!--
+      <value>/WEB-INF/groovy/HelloGroovy.groovy</value>
+      <value>file:/C:/Program Files/Apache Software Foundation/Tomcat 5.5/webapps/demo/WEB-INF/groovy/HelloGroovy.groovy</value>
+      -->
+      <value>classpath:HelloGroovy.groovy</value>
+    </init-param>
+    <!-- If auto-refresh is true, then a modification of script source applies instantly. -->
+    <init-param>
+      <name>auto-refresh</name>
+      <value>true</value>
+    </init-param>
+    <supports>
+      <mime-type>text/html</mime-type>
+      <portlet-mode>VIEW</portlet-mode>
+      <portlet-mode>EDIT</portlet-mode>
+      <portlet-mode>HELP</portlet-mode>
+    </supports>
+    <supported-locale>en</supported-locale>
+    <portlet-info>
+      <title>Hello Groovy Title</title>
+      <short-title>Hello Groovy Short Title</short-title>
+    </portlet-info>
+  </portlet>
+</portlet-app>]]>
+			</source>
+			</p>
+			</subsection>
+			<subsection name="3. The web.xml">
+			<p>
+            You don't have to add any special tags for this simple example,
+            but you can add some tags for supporting Groovlet or Groovy template as a view page.
+            Please see the groovy documentation for those.
+<source><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+                         "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+  <display-name>Groovy Simplest</display-name>
+  <description>The world's simplest Groovy portlet</description>
+
+</web-app>
+]]></source>
+			</p>
+			</subsection>
+			<subsection name="4. The View pages for view, edit and help mode">
+			<p>
+                        Create the hello-groovy-view.jsp file in the groovy-simplest/WEB-INF/view directory. Put whatever content you desire in it. Here is an example: 
+<source><![CDATA[
+<%@ page session="false" %>                            
+<%@ page import="javax.portlet.*"%>
+<%@ taglib uri='/WEB-INF/portlet.tld' prefix='portlet'%>
+
+<portlet:defineObjects/>                            
+
+<%
+String message = renderRequest.getPreferences().getValue("message", "Hello, Groovy!");
+%>
+
+<h1><%=message%>!</h1>
+]]></source>
+
+                        Create the hello-groovy-edit.jsp file in the groovy-simplest/WEB-INF/view directory. Put whatever content you desire in it. Here is an example: 
+<source><![CDATA[
+<%@ page session="false" %>                            
+<%@ page import="javax.portlet.*"%>
+<%@ taglib uri='/WEB-INF/portlet.tld' prefix='portlet'%>
+
+<portlet:defineObjects/>                            
+
+<%
+String message = renderRequest.getPreferences().getValue("message", "Hello, Groovy!");
+%>
+
+<form method="post" action="<portlet:actionURL/>">
+    Message: <input type="text" name="message" value="<%=message%>">
+    <input type="submit" value="Submit">
+</form>
+]]></source>
+                        Last, create the hello-groovy-help.html file in the groovy-simplest/WEB-INF/view directory. Put whatever content you desire in it. Here is an example:
+<source><![CDATA[
+<H1>Hello Groovy Help</H1>
+<HR>
+
+<P>Groovy Portlet support rapid portlet application development.</P>
+]]></source>
+			</p>
+			</subsection>
+			<subsection name="5. The Dependency JARs">
+			<p>
+                        Copy the portals-bridges-groovy-1.0.jar,
+                        groovy-1.1.jar, antlr-2.7.6.jar, and asm-2.2.jar to the groovy-simplest/WEB-INF/lib
+                        directory. (The current version of groovy library was 1.1-beta-2 when the author wrote this guide. Please use the latest version of groovy.)
+                        IMPORTANT: 
+                        Do NOT put the portlet-api-1.0.jar in the war file. If you have already built Jetspeed some of the jars should be in your Maven repository. If so executing these commands in the lib directory will set up the dependencies for you.
+                        <source><![CDATA[
+ln -s ~/.maven/repository/org.apache.portals.bridges/jars/portals-bridges-groovy-1.1.jar
+                        ]]></source>
+                        And, if you download from <a href="http://groovy.codehaus.org">http://groovy.codehaus.org</a> and install groovy,
+                        you can find groovy-1.1.jar, antlr-2.7.6.jar, and asm-2.2.jar in the lib directory under groovy home directory.
+                        Also, copy the portlet.tld to the groovy-simplest/WEB-INF directory. You can find the portlet.tld file in jetspeed-2/src/webapps/WEB-INF/ source directory. Or you can copy  that from the WEB-INF/ directory of the demo portlet.
+			</p>
+			</subsection>
+			<subsection name="6. The WAR file">
+			<p>
+			From the directory groovy-simplest combine the files above into a war file using the command,
+			<source>
+jar cvf ../groovy-simplest.war .
+			</source>
+			</p>
+			</subsection>
+			<subsection name="7. Deploy the WAR file">
+			<p>
+			Copy the war file to <code>$CATALINA_HOME/webapps/jetspeed/WEB-INF/deploy</code>.
+                        Jetspeed-2 will deploy the webapp.
+			</p>
+			</subsection>
+			<subsection name="8. The PSML">
+			<p>
+                        Create the PSML page using the Jetspeed portlet chooser. Login and click on the
+                        edit page icon.
+                        Your user must have the permission to edit pages. The user <code>admin</code>
+                        password
+                        <code>admin</code> has permission to edit all pages.
+			</p>
+			</subsection>
+            <subsection name="9. Additional Notes">
+                <ul>
+                    <li>You can make the script source simpler than Java. See the groovy documentation.</li>
+                    <li>GroovyPortlet instantiates a groovy-scripted portlet instance just like any Java portlet, and so you can use any techniques used in Java portlet programming. For example, your groovy script portlet can extend org.apache.portals.bridges.common.GenericServletPortlet to simplify implementation.</li>
+                    <li>In this example, JSP and JSTL is used for view pages. However, you can use other technologies such as Velocity, Groovlet or Groovy template.</li>
+                    <li>If you use Groovlet or Groovy template, a solution for getting renderRequest and renderResponse can be like this:
+                    <source>
+def renderRequest = request.getAttribute("javax.portlet.request")
+def renderResponse = request.getAttribute("javax.portlet.response")
+                    </source>
+                    </li>
+                </ul>
+			</subsection>
+            <subsection name="10. See Also">
+                <p>You can write preferences validator with groovy, and you can write a groovy script portlet supporting header phase (pre-286 feature).</p>
+                <ul>
+                    <li><a href="prefvalidate.html">Jetspeed Groovy PreferencesValidator Guide</a></li>
+                    <li><a href="headersupport.html">Jetspeed Groovy Portlet with Header Phase Support Guide</a></li>
+                </ul>
+            </subsection>
+		</section>
+	</body>
+</document>

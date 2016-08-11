@@ -1,0 +1,4 @@
+org.apache.portals.bridges.struts
+org.apache.portals.bridges.struts.config
+org.apache.portals.bridges.struts.taglib
+org.apache.portals.bridges.struts.util

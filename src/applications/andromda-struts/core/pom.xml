@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+  
+  http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  
+  $Id: pom.xml 547187 2007-06-14 09:05:19Z ate $
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.apache.portals.bridges.andromda.struts</groupId>
+    <artifactId>andromda-struts</artifactId>
+    <version>1.0.4</version>
+  </parent>
+  <artifactId>andromda-struts-core</artifactId>
+  <packaging>jar</packaging>
+  <name>Andromda Struts Demo Core Business Tier</name>
+  <dependencies>
+    <dependency>
+      <groupId>${pom.groupId}</groupId>
+      <artifactId>andromda-struts-common</artifactId>
+      <version>${pom.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.andromda</groupId>
+      <artifactId>andromda-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.andromda.translationlibraries</groupId>
+      <artifactId>andromda-ocl-translation-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.andromda.translationlibraries</groupId>
+      <artifactId>andromda-ocl-validation-library</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>aopalliance</groupId>
+      <artifactId>aopalliance</artifactId>
+    </dependency>
+    <!--
+      <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate</artifactId>
+      </dependency> -->
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+    </dependency>
+    <!--
+      <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jboss-j2ee</artifactId>
+      </dependency> -->
+    <dependency>
+      <groupId>org.andromda</groupId>
+      <artifactId>andromda-script-wrappers</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.andromda.maven.plugins</groupId>
+        <artifactId>andromda-multi-source-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.andromda.maven.plugins</groupId>
+        <artifactId>andromdapp-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>schema</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <jdbcDriver>${jdbc.driver}</jdbcDriver>
+          <jdbcDriverJar>${jdbc.driver.jar}</jdbcDriverJar>
+          <jdbcConnectionUrl>${jdbc.url}</jdbcConnectionUrl>
+          <jdbcUsername>${jdbc.username}</jdbcUsername>
+          <jdbcPassword>${jdbc.password}</jdbcPassword>
+          <properties>
+            <property>
+              <name>mappingsLocation</name>
+              <value>${project.basedir}/target/src</value>
+            </property>
+            <property>
+              <name>mappingFileExtension</name>
+              <value>hbm.xml</value>
+            </property>
+            <property>
+              <name>createOutputPath</name>
+              <value>
+                ${project.basedir}/../web/target/schema-create.sql
+              </value>
+            </property>
+            <property>
+              <name>dropOutputPath</name>
+              <value>
+                ${project.basedir}/../web/target/schema-drop.sql
+              </value>
+            </property>
+          </properties>
+          <!-- You might need to execute additional scripts, just uncomment and add
+            them here:
+            <scripts>
+            <script>${project.basedir}/path/to/scripts/script1.sql</script>
+            <script>${project.basedir}/path/to/scripts/script2.sql</script>
+            </scripts>
+          -->
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${project.basedir}/model/src</directory>
+              <excludes>
+                <exclude>.svn</exclude>
+              </excludes>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+    </plugins>
+    <resources>
+      <resource>
+        <directory>target/src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+  </build>
+</project>

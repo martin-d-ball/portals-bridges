@@ -1,0 +1,12 @@
+Apache Portals Bridges
+
+Copyright 2005-2007 The Apache Software Foundation
+
+This product includes software developed by
+The Apache Software Foundation (http://www.apache.org/).
+
+The php-bridge depends on the phpportlet library developed by
+Roger Ruttiman under the PHP License 2.02.
+(http://www.php.net/license/2.02)
+
+Copyright (c) 1999-2002 The PHP Group. All rights reserved.

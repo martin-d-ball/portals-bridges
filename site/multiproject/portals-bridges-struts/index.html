@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>Portals Bridges - Struts Bridge - Struts Bridge Summary</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-bridges.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta></head><body class="composite"><div id="banner"><a href="http://portals.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="http://portals.apache.org/images/apache-portals.gif"></img></a><a href="http://portals.apache.org/bridges" id="projectLogo"><span>Struts Bridge</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 21 December 2007
+                  | Doc for 1.0.4</div><div class="xright">
+        
+        <a href="http://portals.apache.org/jetspeed-2" class="externalLink" title="External Link" target="_nw">Jetspeed 2</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="../../index.html">Bridges Home</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="portals-bridges-struts.pdf"><img title="PDF Documentation" style="border: 1px" src="images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuStruts_Bridge"><h5>Struts Bridge</h5><ul><li class="none"><a href="index.html">Summary</a></li><li class="none"><a href="features.html">Features</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><strong><a href="index.html">About Struts Bridge</a></strong></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Summary"></a><h2>Summary</h2><p>
+        The Struts Bridge allows <a href="http://struts.apache.org" class="externalLink" title="External Link" target="_nw">Struts</a> and Struts Tiles applications to be run
+        as <a href="http://www.jcp.org/en/jsr/detail?id=168" class="externalLink" title="External Link" target="_nw">JSR-168</a> compliant Portlets.
+      </p><p>
+        Existing or new Struts Applications can be transparently deployed as Portlet Application or
+        Web Application.<br></br>
+        The Bridge wraps and enhances the native Struts Framework to overcome its limitations and
+        incompatibilities with the Java Portlet Standard requirements.
+      </p><p>
+        An existing Struts Application can be used as a Portlet <em>without</em> changes to the code or JSP files if:
+        <ul>
+          <li>a few common sense rules, based on a proper MVC architecture, are followed for the Struts Action configurations</li>
+          <li>Struts Tags are used for rendering all resource paths (like images) and action links</li>
+        </ul>
+      </p><p>
+        If a Struts Portlet doesn't use Portlet specific features, it can also be accessed and used as Web Application at
+        the same time. Even testing the Struts Application can then be done completely independent of a Portal.
+      </p><p>
+        The Struts Bridge is developed to be independent from specific Portals and uses only a very small interface to
+        the Portal to be able to get access to the Servlet environment at runtime. As all JSR-168 Portlet Containers are
+        required to build upon the Servlet specification, providing this interface for a specific Portal is usually very
+        easy to do, if not done already.
+      </p><p>
+        The Apache Portals <a href="http://portals.apache.org/jetspeed-2" class="externalLink" title="External Link" target="_nw">Jetspeed-2 Portal</a> provides this interface
+        natively, as well as example Struts Portlet Applications using the Struts Bridge like a JPetstore Portlet. 
+      </p></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2005-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

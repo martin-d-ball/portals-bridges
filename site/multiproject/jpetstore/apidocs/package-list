@@ -1,0 +1,6 @@
+com.ibatis.jpetstore.domain
+com.ibatis.jpetstore.persistence
+com.ibatis.jpetstore.persistence.iface
+com.ibatis.jpetstore.persistence.sqlmapdao
+com.ibatis.jpetstore.presentation
+com.ibatis.jpetstore.service

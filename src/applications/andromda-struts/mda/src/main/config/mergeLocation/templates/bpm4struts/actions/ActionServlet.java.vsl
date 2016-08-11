@@ -1,0 +1,76 @@
+#*
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  $Id: ActionServlet.java.vsl 547187 2007-06-14 09:05:19Z ate $
+*#
+#set ($generatedFile = "$stringUtils.replace($servletPackage, '.', '/')/ActionServlet.java")
+package $servletPackage;
+
+/**
+ * This servlet is designed to avoid Struts copying zeroes into those form
+ * fields that take numerical values.
+ *
+ * It also takes care of properly setting the content type for the returned reponse.
+ */
+public final class ActionServlet
+    extends org.apache.struts.action.ActionServlet
+{
+    /**
+     * Call the parent initializer and configure the converter not to
+     * convert <code>null</code> numbers to the corresponding zero value.
+     */
+    public void init(final javax.servlet.ServletConfig config)
+        throws javax.servlet.ServletException
+    {
+        super.init(config);
+
+        org.apache.commons.beanutils.ConvertUtils.register(
+            new org.apache.commons.beanutils.converters.LongConverter(null), java.lang.Long.class);
+        org.apache.commons.beanutils.ConvertUtils.register(
+            new org.apache.commons.beanutils.converters.IntegerConverter(null), java.lang.Integer.class);
+        org.apache.commons.beanutils.ConvertUtils.register(
+            new org.apache.commons.beanutils.converters.ShortConverter(null), java.lang.Short.class);
+        org.apache.commons.beanutils.ConvertUtils.register(
+            new org.apache.commons.beanutils.converters.DoubleConverter(null), java.lang.Double.class);
+        org.apache.commons.beanutils.ConvertUtils.register(
+            new org.apache.commons.beanutils.converters.FloatConverter(null), java.lang.Float.class);
+    }
+
+#if ($xhtml == "true")
+#set ($contentType = "application/xhtml+xml")
+#else
+#set ($contentType = "text/html")
+#end
+    public void doGet(
+        final javax.servlet.http.HttpServletRequest request,
+        final javax.servlet.http.HttpServletResponse response)
+        throws java.io.IOException, javax.servlet.ServletException
+    {
+        response.setContentType("$contentType; charset=$pageEncoding");
+        System.out.println("Servlet path : " + request.getServletPath());
+        super.doGet(request, response);
+    }
+
+    public void doPost(
+        final javax.servlet.http.HttpServletRequest request,
+        final javax.servlet.http.HttpServletResponse response)
+        throws java.io.IOException, javax.servlet.ServletException
+    {
+        response.setContentType("$contentType; charset=$pageEncoding");
+        System.out.println("Servlet path : " + request.getServletPath());
+        super.doPost(request, response);
+    }
+}

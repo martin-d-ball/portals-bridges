@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>Portals Bridges - PHP Bridge - PHP Bridge Getting Started</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+			    @import url("./style/maven-bridges.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta></head><body class="composite"><div id="banner"><a href="http://portals.apache.org/" id="organizationLogo"><img alt="Apache Software Foundation" src="http://portals.apache.org/images/apache-portals.gif"></img></a><a href="http://portals.apache.org/bridges" id="projectLogo"><span>PHP Bridge</span></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+                	Last published: 21 December 2007
+                  | Doc for 1.0.4</div><div class="xright">
+        
+        <a href="http://portals.apache.org/jetspeed-2" class="externalLink" title="External Link" target="_nw">Jetspeed 2</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="../../index.html">Bridges Home</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="portals-bridges-php.pdf"><img title="PDF Documentation" style="border: 1px" src="../../images/pdf.gif" alt="PDF Documentation"></img></a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menuPortals_Bridges"><h5>Portals Bridges</h5><ul><li class="none"><a href="getting-started.html">Getting Started</a></li><li class="none"><a href="demo.html">PHP Demo Application</a></li><li class="none"><a href="portlets.html">Configuring Portlets</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About PHP Bridge</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Getting_Started"></a><h2>Getting Started</h2><TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0" FRAME="BELOW" RULES="GROUPS" STYLE="page-break-before: always">
+				<COLGROUP>
+					<COL WIDTH="74*"></COL>
+					<COL WIDTH="88*"></COL>
+				</COLGROUP>
+				<COLGROUP>
+					<COL WIDTH="94*"></COL>
+				</COLGROUP>
+				<THEAD>
+					<TR>
+						<TH COLSPAN="3" WIDTH="100%" VALIGN="TOP">
+							<P>The following document describes how to install and configure
+								your php-Applications</P>
+						</TH>
+					</TR>
+				</THEAD>
+				<TBODY>
+					<TR VALIGN="TOP">
+						<TD COLSPAN="2" WIDTH="63%">
+							<P><U><B>System requirements</B></U></P>
+						</TD>
+						<TD WIDTH="37%">
+							<P><U><B>Resources</B></U></P>
+							
+						</TD>
+					</TR>
+					<TR VALIGN="TOP">
+						<TD COLSPAN="2" WIDTH="63%">
+							<P><FONT SIZE="2">The PHP library needs to be in the path of the
+								servlet container so that it can get invoked from the portlet.
+								The library is platform specific. Download the library from the
+								PHP site or from the links on the left.</FONT></P>
+						</TD>
+						<TD ROWSPAN="4" WIDTH="37%">
+							<UL>
+								
+								<LI>
+									<P>
+										<FONT SIZE="2">Linux: </FONT>
+										<A HREF="http://www.bluesunrise.com/jetspeed-2/bridges/php/dist/libphp4.so">
+											<FONT SIZE="2">libphp4.so</FONT>
+										</A>
+									</P>
+								</LI>
+								<LI>
+									<P>
+										<FONT SIZE="2">Windows: </FONT>
+										<A HREF="http://www.bluesunrise.com/jetspeed-2/bridges/php/dist/php4ts.dll">
+											<FONT SIZE="2">php4ts.dll</FONT>
+										</A>
+										<FONT SIZE="2">&amp; </FONT>
+										<A HREF="http://www.bluesunrise.com/jetspeed-2/bridges/php/dist/phpsrvlt.dll">
+											<FONT SIZE="2">phpsrvlt.dll</FONT>
+										</A>
+									</P>
+								</LI>
+								<LI>
+									<P>
+										<FONT SIZE="2">Servlet interface between PHP libraries and portlets. The package
+											is automatically downloaded to the maven/repository/itgroundwork/jars
+											directory during the build.<A HREF="http://www.bluesunrise.com/maven/itgroundwork/jars/phpportlet-1.0.jar">phportlet-1.0.jar</A></FONT>
+									</P>
+								</LI>
+								<LI></LI>
+								<LI>
+									<FONT SIZE="2">
+										<P>Entire source tree for PHP 4.3.6 which was used for building the shared
+											libraries used by the portlet. PHP4 included the servlet and java
+											extensions. The java and the servlet subdirectories were modified to work
+											with the portlet part of the Portals Bridges Project</P>
+										<P>Note: This version was successfully tested on Linux</P>
+										<P>Source: <A HREF="http://www.bluesunrise.com/jetspeed-2/bridges/php/src/source-php-portlet-4.3.6.tar.gz">PHP 4.3.6 source with modified java &amp; servlet extension</A></P>
+									</FONT>
+									
+								</LI>
+								<LI>
+									<FONT SIZE="2">
+										<P>In PHP 5 the Java and Servlet extensions were removed from the core product.
+											They are only available in the CVS repository. An initial effort went in to
+											upgrade it to PHP5 API's. The source includes the modified <A HREF="http://www.bluesunrise.com/jetspeed-2/bridges/php/src/source-php-portlet-5.0.4.tar.gz">Extensions for PHP 5.0.4 (java &amp; servlet)</A></P>
+										<P>Note: This version was tested with PHP 5 on Linux but it wasn't as stable as
+											version 4.x. Using any PHP objects crashed tomcat. Running PHP 4.x style
+											code worked without any problems and was stable. </P>
+									</FONT>
+								</LI>
+							</UL>
+						</TD>
+					</TR>
+					
+				</TBODY>
+				<TBODY>
+					<TR>
+						<TD COLSPAN="2" WIDTH="63%" VALIGN="TOP">
+							<P><FONT SIZE="3"><U><B>Setup</B></U></FONT></P>
+						</TD>
+					</TR>
+					<TR VALIGN="TOP">
+						<TD WIDTH="29%">
+							<P><FONT SIZE="2">Linux</FONT></P>
+						</TD>
+						<TD WIDTH="34%">
+							<P><FONT SIZE="2">Windows</FONT></P>
+						</TD>
+					</TR>
+					<TR VALIGN="TOP">
+						<TD WIDTH="29%">
+							<P><FONT SIZE="2">Download libphp4.so and add the directory
+								containing the library to the environment var  <B>LD_LIBRARY_PATH</B>.</FONT></P>
+							<P><BR></BR>
+							</P>
+						</TD>
+						<TD WIDTH="34%">
+							<P><FONT SIZE="2">Download php4ts.dll and phpsrvlt.dll and add the
+								directory containing  the libraries to the <B>PATH.</B></FONT></P>
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2005-2007, Apache Software Foundation</div><div class="clear"><hr></hr></div></div></body></html>

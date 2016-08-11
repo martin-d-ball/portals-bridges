@@ -1,0 +1,47 @@
+#*
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  $Id: application-help.jsp.vsl 547187 2007-06-14 09:05:19Z ate $
+*#
+#if ($onlineHelp == "true")
+#set ($generatedFile = "application-help.jsp")
+#if(!$applicationUseCases.empty)#set($applicationUseCase=$applicationUseCases.iterator().next())#end
+##
+##  START TEMPLATE
+##
+<%@ include file="/taglib-imports.jspf" %>
+
+<tiles:insert definition="help.layout">
+
+    <tiles:put name="body" type="string">
+        <h1><bean:message key="$applicationUseCase.titleKey"/></h1>
+        <p>
+            <bean:message key="$applicationUseCase.onlineHelpKey"/>
+        </p>
+#set ( $defaultUseCase = $applicationUseCase.titleKey )
+#foreach ($useCase in $applicationUseCase.allUseCases)
+  #if ( $useCase.titleKey != $defaultUseCase )
+        <h2><bean:message key="$useCase.titleKey"/></h2>
+        <p>
+            <bean:message key="$useCase.onlineHelpKey"/>
+        </p>
+  #end
+#end
+    </tiles:put>
+
+</tiles:insert>
+
+#end
