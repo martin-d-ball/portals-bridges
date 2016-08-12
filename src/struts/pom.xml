@@ -29,7 +29,7 @@ limitations under the License.
     <!-- POM Identification -->
 
     <artifactId>portals-bridges-struts-1.2.7</artifactId>
-    <version>1.0.4.GRG1-SNAPSHOT</version>
+    <version>1.0.4.GRG1</version>
     <parent>
         <groupId>org.apache.portals.bridges</groupId>
         <artifactId>portals-bridges</artifactId>
@@ -41,6 +41,7 @@ limitations under the License.
     <description>
         Apache Portals Struts Bridge
     </description>
+
   <developers>
     <developer>
       <name>Ate Douma</name>
@@ -86,6 +87,20 @@ limitations under the License.
     <!-- Build Configuration -->
 
     <build>
+        <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>attach-sources</id>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        </plugins>
         <sourceDirectory>src/java</sourceDirectory>
         <resources>
             <resource>
