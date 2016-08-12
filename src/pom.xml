@@ -489,9 +489,9 @@ limitations under the License.
 
                         <!-- J2 Build -->
                         <dependency>
-                            <groupId>${pom.groupId}</groupId>
+                            <groupId>${project.groupId}</groupId>
                             <artifactId>ant-tasks</artifactId>
-                            <version>${pom.version}</version>
+                            <version>${project.version}</version>
                         </dependency>
 
                     </dependencies>

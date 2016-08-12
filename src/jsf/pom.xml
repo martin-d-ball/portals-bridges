@@ -55,7 +55,7 @@ limitations under the License.
        <dependency>
          <groupId>org.apache.portals.bridges</groupId>
          <artifactId>portals-bridges-common</artifactId>
-         <version>${pom.version}</version>
+         <version>${project.version}</version>
       </dependency>   
         <dependency>
             <groupId>javax.servlet</groupId>

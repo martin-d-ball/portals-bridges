@@ -50,7 +50,7 @@
         <property name="maxSqlNameLength">30</property>
         <property name="foreignKeySuffix">_FK</property>
         <property name="ejbJndiNamePrefix">
-          ${application.id}-${pom.version}
+          ${application.id}-${project.version}
         </property>
         <!-- these masking properties allow you to configure the way
           your model element names are generated -->

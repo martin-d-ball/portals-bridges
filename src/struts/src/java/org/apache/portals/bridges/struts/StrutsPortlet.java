@@ -18,6 +18,7 @@ package org.apache.portals.bridges.struts;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -519,35 +520,12 @@ public class StrutsPortlet extends GenericPortlet
             StrutsPortletErrorContext errorContext) throws IOException
     {
         PrintWriter writer = response.getWriter();
-        writer.println("<hr/><h2>Error</h2>");
-        writer.println("<table border='1'>");
-        if (errorContext.getErrorCode() != 0)
-            writer.println("<tr><td valign='top'><b>Error Code</b></td><td>"
-                    + errorContext.getErrorCode() + "</td></tr>");
-        if (errorContext.getErrorMessage() != null)
-            writer.println("<tr><td valign='top'><b>Error Message</b></td><td>"
-                    + errorContext.getErrorMessage() + "</td></tr>");
-        if (errorContext.getError() != null)
-        {
-            Throwable e = errorContext.getError();
-            if (e instanceof ServletException
-                    && ((ServletException) e).getRootCause() != null)
-                e = ((ServletException) e).getRootCause();
-            writer.print("<tr><td valign='top'><b>Error</b></td><td>"
-                    + e.getMessage() + "</td></tr>");
-            writer.print("<tr><td valign='top'><b>Error Type</b></td><td>"
-                    + e.getClass().getName() + "</td></tr>");
-            writer.print("<tr><td valign='top'><b>Stacktrace</b></td><td>");
-            StackTraceElement[] elements = e.getStackTrace();
-            StringBuffer buf = new StringBuffer();
-            for (int i = 0; i < elements.length; i++)
-                buf.append("  " + elements[i].toString() + "<br>");
-            writer.print(buf.toString());
-            writer.println("</td></tr>");
-        }
-        writer.println("</table>");
+        writer.println("<div class=\"unexpected-error\">");
+        writer.println("<h2 class=\"unexpected-error-heading\">Error</h2>");
+        writer.println("<p class=\"unexpected-error-message\">Sorry an error occurred</p>");
+        writer.println("</div>");
     }
-    
+
     public HttpSession getApplicationSession(HttpServletRequest request)
     {
         HttpSession appSession = (HttpSession)request.getAttribute(SERVLET_PORTLET_APPLICATION_SESSION);

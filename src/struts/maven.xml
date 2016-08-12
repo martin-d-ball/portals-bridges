@@ -28,7 +28,7 @@ limitations under the License.
         <j:if test="${tldFile.name.endsWith('.tld')}">
           <j:set var="tldPath" value="${tldFile.absolutePath}" />
           <j:set var="tldName" value="${tldFile.name.substring(7,tldFile.name.lastIndexOf('.tld'))}" />
-          <copy file="${tldPath}" tofile="${maven.repo.local}/${pom.groupId}/tlds/struts-${struts.version}-${tldName}-${pom.currentVersion}.tld" overwrite="true" verbose="true"/>
+          <copy file="${tldPath}" tofile="${maven.repo.local}/${project.groupId}/tlds/struts-${struts.version}-${tldName}-${pom.currentVersion}.tld" overwrite="true" verbose="true"/>
         </j:if>
       </j:forEach>
     </j:if>

@@ -29,6 +29,7 @@ limitations under the License.
     <!-- POM Identification -->
 
     <artifactId>portals-bridges-struts-1.2.7</artifactId>
+    <version>1.0.4.GRG1-SNAPSHOT</version>
     <parent>
         <groupId>org.apache.portals.bridges</groupId>
         <artifactId>portals-bridges</artifactId>
@@ -69,7 +70,7 @@ limitations under the License.
        <dependency>
          <groupId>org.apache.portals.bridges</groupId>
          <artifactId>portals-bridges-common</artifactId>
-         <version>${pom.version}</version>
+         <version>${parent.version}</version>
       </dependency>
        <dependency>
          <groupId>struts</groupId>
